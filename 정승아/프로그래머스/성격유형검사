@@ -1,1 +1,88 @@
-
+class Solution {
+    static int which_ans(int choice) {
+        int ret = 0;
+        switch(choice) {
+            case 1:
+                ret = 3;
+                break;
+            case 2:
+                ret = 2;
+                break;
+            case 3:
+                ret = 1;
+                break;
+            case 4:
+                ret = 0;
+                break;
+            case 5:
+                ret = -1;
+                break;
+            case 6:
+                ret = -2;
+                break;
+            case 7:
+                ret = -3;
+                break;
+        }
+        
+        return ret;
+    }
+    
+    public String solution(String[] survey, int[] choices) {
+        String answer = "";
+        int rt = 0; /* r은 양수, t는 음수 */
+        int fc = 0; /* f은 양수, c는 음수 */
+        int mj = 0; /* m은 양수, j는 음수 */
+        int an = 0; /* a은 양수, n는 음수 */
+        
+        for(int i = 0; i < survey.length; i++) {
+            switch(survey[i]) {
+                case "RT" :
+                    rt += which_ans(choices[i]);                    
+                    break;
+                    
+                case "TR" :
+                    rt += which_ans(choices[i]) * (-1);
+                    break;
+                    
+                case "FC" :
+                    fc += which_ans(choices[i]);                    
+                    break;
+                    
+                case "CF" :
+                    fc += which_ans(choices[i]) * (-1);                  
+                    break;
+                    
+                case "MJ" :
+                    mj += which_ans(choices[i]);               
+                    break;
+                    
+                case "JM" :
+                    mj += which_ans(choices[i]) * (-1);                   
+                    break;
+                    
+                case "AN" :
+                    an += which_ans(choices[i]);                   
+                    break;
+                    
+                case "NA" :
+                    an += which_ans(choices[i]) * (-1);                  
+                    break;
+            }
+        }
+        
+        if(rt >= 0) answer = "R";
+        else answer = "T";
+        
+        if(fc > 0) answer = answer + "F";
+        else answer = answer + "C";
+        
+        if(mj > 0) answer = answer + "M";
+        else answer = answer + "J";
+        
+        if(an >= 0) answer = answer + "A";
+        else answer = answer + "N";
+        
+        return answer;
+    }
+}
