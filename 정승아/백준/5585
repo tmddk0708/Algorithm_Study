@@ -1,0 +1,47 @@
+//https://www.acmicpc.net/problem/5585
+//다른 더 좋은 방법도 있을거같은데.. 머리가 안돌아가네욤
+
+import java.util.*;
+import java.io.*;
+
+public class Main
+{
+    public static void main(String args[])
+    {
+        Scanner scan = new Scanner(System.in);
+        int cost = 1000 - scan.nextInt();
+        int answer = 0;
+        
+        while (cost >= 500) {
+            cost -= 500;
+            answer++;
+        }
+        
+        while(cost >= 100) {
+            cost -= 100;
+            answer++;
+        }
+        
+        while(cost >= 50) {
+            cost -= 50;
+            answer++;
+        }
+        
+        while(cost >= 10) {
+            cost -= 10;
+            answer++;
+        }
+        
+        while(cost >= 5) {
+            cost -= 5;
+            answer++;
+        }
+        
+        while(cost >= 1) {
+            cost -= 1;
+            answer++;
+        }   
+        
+        System.out.println(Integer.toString(answer));
+    }
+}
