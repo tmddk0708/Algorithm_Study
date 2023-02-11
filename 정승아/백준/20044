@@ -1,0 +1,30 @@
+//https://www.acmicpc.net/problem/20044
+//BufferedReader 를 써서 시도했었는데 runtime 에러나고 하더라구요,, 왤까욤?ㅎ
+
+import java.util.*;
+import java.io.*;
+
+public class Main
+{
+    public static void main(String args[])
+    {                
+        Scanner scan = new Scanner(System.in);
+        int num = scan.nextInt();
+        int minvalue = 999999;
+        int min = 0;
+        int[] arr = new int[num*2];    //학생 점수 배열
+        
+        for(int i = 0; i < arr.length; i++) {                                
+            arr[i] = scan.nextInt();
+        }
+        
+        Arrays.sort(arr);
+        
+        for(int i = 0; i < num; i++) {
+            min = arr[i] + arr[num*2-(1+i)];
+            if(min < minvalue) minvalue = min;
+        }            
+        
+        System.out.println(Integer.toString(minvalue));
+    }
+}
