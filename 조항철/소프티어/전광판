@@ -1,0 +1,130 @@
+import java.util.*;
+import java.io.*;
+
+public class App {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int N = Integer.parseInt(br.readLine());
+        Boolean[][] beforeNumberLight = new Boolean[5][7];
+        Boolean[][] afterNumberLight = new Boolean[5][7];
+        Boolean[] zero = { true, true, true, false, true, true, true };
+        Boolean[] one = { false, false, true, false, false, true, false };
+        Boolean[] two = { true, false, true, true, true, false, true };
+        Boolean[] three = { true, false, true, true, false, true, true };
+        Boolean[] four = { false, true, true, true, false, true, false };
+        Boolean[] five = { true, true, false, true, false, true, true };
+        Boolean[] six = { true, true, false, true, true, true, true };
+        Boolean[] seven = { true, true, true, false, false, true, false };
+        Boolean[] eight = { true, true, true, true, true, true, true };
+        Boolean[] nine = { true, true, true, true, false, true, true };
+        for (int i = 0; i < N; i++) {       //초기화
+            for (int n = 0; n < 5; n++) {
+                for (int m = 0; m < 7; m++) {
+                    beforeNumberLight[n][m] = false;
+                    afterNumberLight[n][m] = false;
+                }
+            }
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int beforeNumber = Integer.parseInt(st.nextToken());
+            int afterNumber = Integer.parseInt(st.nextToken());
+            int eachNum = beforeNumber / 10;
+            int rest = beforeNumber % 10;
+            for (int k = 0; k < 5; k++) {       //첫번째 숫자 배열에 입력
+                switch (rest) {
+                    case 0:
+                        if (eachNum != 0) {
+                            beforeNumberLight[k] = zero.clone();
+                        }
+                        break;
+                    case 1:
+                        beforeNumberLight[k] = one.clone();
+                        break;
+                    case 2:
+                        beforeNumberLight[k] = two.clone();
+                        break;
+                    case 3:
+                        beforeNumberLight[k] = three.clone();
+                        break;
+                    case 4:
+                        beforeNumberLight[k] = four.clone();
+                        break;
+                    case 5:
+                        beforeNumberLight[k] = five.clone();
+                        break;
+                    case 6:
+                        beforeNumberLight[k] = six.clone();
+                        break;
+                    case 7:
+                        beforeNumberLight[k] = seven.clone();
+                        break;
+                    case 8:
+                        beforeNumberLight[k] = eight.clone();
+                        break;
+                    case 9:
+                        beforeNumberLight[k] = nine.clone();
+                        break;
+                    default:
+                        break;
+                }
+                rest = eachNum % 10;
+                eachNum = eachNum / 10;
+                if (rest + eachNum == 0)
+                    break;
+            }
+            eachNum = afterNumber / 10;
+            rest = afterNumber % 10;
+            for (int k = 0; k < 5; k++) {       //두번째 숫자 배열에 입력
+                switch (rest) {
+                    case 0:
+                        if (eachNum != 0) {
+                            afterNumberLight[k] = zero.clone();
+                        }
+                        break;
+                    case 1:
+                        afterNumberLight[k] = one.clone();
+                        break;
+                    case 2:
+                        afterNumberLight[k] = two.clone();
+                        break;
+                    case 3:
+                        afterNumberLight[k] = three.clone();
+                        break;
+                    case 4:
+                        afterNumberLight[k] = four.clone();
+                        break;
+                    case 5:
+                        afterNumberLight[k] = five.clone();
+                        break;
+                    case 6:
+                        afterNumberLight[k] = six.clone();
+                        break;
+                    case 7:
+                        afterNumberLight[k] = seven.clone();
+                        break;
+                    case 8:
+                        afterNumberLight[k] = eight.clone();
+                        break;
+                    case 9:
+                        afterNumberLight[k] = nine.clone();
+                        break;
+                    default:
+                        break;
+                }
+                rest = eachNum % 10;
+                eachNum = eachNum / 10;
+                if (rest + eachNum == 0)
+                    break;
+            }
+            int cnt = 0;
+            for (int n = 0; n < 5; n++) {
+                for (int m = 0; m < 7; m++) {
+                    if (beforeNumberLight[n][m] != afterNumberLight[n][m])
+                        cnt++;
+                }
+            }
+            bw.write(Integer.toString(cnt) + "\n");
+        }
+        bw.close();
+    }
+}
