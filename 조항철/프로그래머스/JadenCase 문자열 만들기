@@ -1,0 +1,37 @@
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
+
+public class App {
+    public static void main(String[] args) throws Exception {
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String inParam = "3people unFollowed    me ab   .  ";
+        // String inParam = "for the last week";
+        bw.write(solution(inParam));
+        bw.close();
+    }
+
+    public static String solution(String s) {
+        StringTokenizer st = new StringTokenizer(s);
+        String answer = "";
+        String temp = "";
+        int idx = 0;
+        while (st.hasMoreTokens()) {
+            temp = st.nextToken();
+            int tmp = s.indexOf(temp, idx) - answer.length();
+            for (int i = 0; i < tmp; i++) {
+                answer = answer + " ";
+                idx++;
+            }
+
+            answer = answer + temp.substring(0, 1).toUpperCase() + temp.substring(1).toLowerCase();
+            idx += temp.length();
+        }
+        int tmp = s.length() - answer.length();
+        for (int i = 0; i < tmp; i++) {
+            answer = answer + " ";
+            idx++;
+        }
+        return answer;
+    }
+}
