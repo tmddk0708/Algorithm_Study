@@ -1,0 +1,31 @@
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
+
+public class Solution {
+    public static String solution(String[] cards1, String[] cards2, String[] goal) {
+        String answer = "Yes";
+        int c1 = 0, c2 = 0, g = 0;
+        for (g = 0; g < goal.length; g++) {
+            if (c1 < cards1.length && goal[g].equals(cards1[c1])) {
+                c1++;
+            } else if (c2 < cards2.length && goal[g].equals(cards2[c2])) {
+                c2++;
+            } else {
+                answer = "No";
+                break;
+            }
+        }
+        return answer;
+    }
+
+    public static void main(String[] args) throws Exception {
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        // String[] cards1 = { "i", "drink", "water" };
+        String[] cards1 = { "i", "water", "drink" };
+        String[] cards2 = { "want", "to" };
+        String[] goal = { "i", "want", "to", "drink", "water" };
+        String answer = solution(cards1, cards2, goal);
+        bw.write(answer);
+        bw.close();
+    }
+}
