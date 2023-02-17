@@ -1,0 +1,35 @@
+//https://school.programmers.co.kr/learn/courses/30/lessons/12951
+//더럽...
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+class Solution {
+    public String solution(String s) {
+        String answer = "";        
+        String[] answer_list = s.split(" ");        
+        
+        for(int i = 0; i < answer_list.length; i++) {
+            for(int j = 0; j < answer_list[i].length(); j++) {
+                if(j == 0) {
+                    if(answer_list[i].charAt(0) >= 'a' && answer_list[i].charAt(0) <= 'z') {
+                        answer = answer.concat(Character.toString(Character.toUpperCase(answer_list[i].charAt(0))));
+                    }
+                    else answer = answer.concat(Character.toString(answer_list[i].charAt(0)));
+                }
+                else if (answer_list[i].charAt(j) != ' '){                    
+                    answer = answer.concat(Character.toString(Character.toLowerCase(answer_list[i].charAt(j))));
+                }
+            }
+            
+            if(i < answer_list.length - 1
+              || (i == answer_list.length - 1
+                    && s.charAt(s.length() - 1) == ' ')) {
+                answer = answer.concat(" ");
+            }           
+        }
+        
+        return answer;
+    }
+}
