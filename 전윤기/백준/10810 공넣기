@@ -1,0 +1,46 @@
+// 문제번호 : 10810 
+// url : https://www.acmicpc.net/problem/10810
+
+            int n, m, i, j, k = 0;
+            string[] input_nm;
+            string[] input_data;
+
+            //01. input 받기 
+            input_nm = Console.ReadLine().Split(' ');
+            n = int.Parse(input_nm[0]);
+            m = int.Parse(input_nm[1]);
+
+            int[] result = new int[n];  //배열 길이 세팅
+
+            //02. 배열 초기화
+            for (int z = 0; z < n; z++) result[z] = 0;
+
+            //03, 공 넣기
+            for (int x = 0; x < m; x++)
+            {
+                input_data = Console.ReadLine().Split(' ');
+                i = int.Parse(input_data[0]);
+                j = int.Parse(input_data[1]);
+                k = int.Parse(input_data[2]);
+                Throwing();  // i~j에 k번 공 던지기
+            }
+            //04. 출력
+            printArr();
+
+            //공넣기 함수
+            void Throwing()
+            {
+                for (; i <= j; i++)
+                {
+                    result[i - 1] = k;
+                }
+            }
+            //출력 함수
+            void printArr()
+            {
+                for (int z = 0; z < result.Length; z++)
+                {
+                    if (z == result.Length - 1) Console.Write(result[z]);
+                    else Console.Write(result[z] + " ");
+                }
+            }
