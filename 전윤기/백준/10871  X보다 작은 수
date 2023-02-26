@@ -1,0 +1,28 @@
+//문제번호 : 10871
+//url : https://www.acmicpc.net/problem/10871
+
+
+            StreamReader reader = new StreamReader(Console.OpenStandardInput());
+            StreamWriter writer = new StreamWriter(Console.OpenStandardOutput());
+            //StringBuilder sb = new StringBuilder();
+
+            string input1 = reader.ReadLine();
+            string[] input1_arr = input1.Split();
+
+            int N = int.Parse(input1_arr[0]);
+            int X = int.Parse(input1_arr[1]);
+            
+            string input2 = reader.ReadLine();
+            string[] input2_arr = input2.Split();
+
+            //비교
+            for (int i = 0; i < N; i++)
+            {
+                if(int.Parse(input2_arr[i]) < X)
+                {
+                    writer.Write(input2_arr[i] + " ");
+                }
+            }
+            reader.Close();
+            writer.Flush();
+            writer.Close();
