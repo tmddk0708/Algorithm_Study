@@ -1,0 +1,33 @@
+public class App {
+    public static void main(String[] args) throws Exception {
+        int number = 10, limit = 3, power = 2;
+        System.out.println(solution(number, limit, power));
+    }
+
+    public static int solution(int number, int limit, int power) {
+        int answer = 0;
+        for (int i = 1; i <= number; i++) {
+            int tmp = counting(i);
+            if (tmp > limit) {
+                tmp = power;
+            }
+            answer += tmp;
+        }
+        return answer;
+    }
+
+    public static int counting(int number) {    //약수개수 세는 함수
+        int cnt = 0;
+        for (int i = 1; i <= Math.sqrt(number); i++) {  //약수의 개수를 셀 때는 제곱근까지만 세면됨
+            if (number % i == 0) {
+                if (i * i == number) {  //제곱수는 카운트를 하나만 올림
+                    cnt++;
+                } else {
+                    cnt++;
+                    cnt++;
+                }
+            }
+        }
+        return cnt;
+    }
+}
