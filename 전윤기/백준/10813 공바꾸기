@@ -1,0 +1,46 @@
+// 문제번호 : 10813 공바꾸기 
+// url : https://www.acmicpc.net/problem/10813
+
+            //01. input
+            int[] inputIntArr;
+
+            string[] inputStrArr = Console.ReadLine().Split(' ');
+            int n = int.Parse(inputStrArr[0]);
+            int m = int.Parse(inputStrArr[1]);
+
+            inputIntArr = new int[n];
+
+            //02.init
+            for (int i = 0; i < n; i++)
+            {
+                inputIntArr[i] = i + 1;
+            }
+            //print();
+
+            //03. swap input
+            for (int i = 0; i < m; i++)
+            {
+                string[] aa = Console.ReadLine().Split(' ');
+                ChangeBall(int.Parse(aa[0]), int.Parse(aa[1]));
+                //print();
+            }
+            // 04. print result
+            print();
+
+            //swap 함수
+            void ChangeBall(int i, int j)
+            {
+                int tmp ;
+                tmp = inputIntArr[i-1];
+                inputIntArr[i-1] = inputIntArr[j-1];
+                inputIntArr[j-1] = tmp;
+
+            }
+            // 출력 함수
+            void print()
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    Console.Write(inputIntArr[i] + " ");
+                }
+            }
