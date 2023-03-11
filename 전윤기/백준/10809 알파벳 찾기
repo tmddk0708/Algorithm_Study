@@ -1,0 +1,43 @@
+
+// 문제번호 : 10809
+// url : https://www.acmicpc.net/problem/10809
+
+            string result = "";            
+            string s = Console.ReadLine();
+            
+            //1.알파벳 갯수만큼 출력
+            for(int i = 0; i < 26; i++)
+            {
+                int tmp = -1;
+                //2.input과 아스키코드로 비교( a : 97)
+                for (int j = 0; j < s.Length ; j++)
+                {
+                    if (s[j] - 97 == i)
+                    {
+                        tmp = j; 
+                        break;                        
+                    }
+                }
+                result += tmp.ToString() + " ";                
+            }
+            Console.WriteLine(result);
+            
+  /* 다른 풀이..
+   * 문자열이 없으면 -1을 출력하는 것을 string배열의 IndexOf 함수를 이용.. 굳.. 
+    
+            string s = Console.ReadLine();
+            // 소문자 아스키코드 : 97~122번
+
+            for (int i = 97; i < 123; i++)
+            {
+                if (s.Contains(Convert.ToChar(i)))
+                {
+                    Console.Write(s.IndexOf(Convert.ToChar(i)));
+                    Console.Write(" ");
+                }
+                else
+                {
+                    Console.Write("-1 ");
+                }
+            }
+   */
